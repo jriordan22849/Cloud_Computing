@@ -1,8 +1,12 @@
 #	Jonathan Riordan
 #	C13432152
 #	Cloud computing
-word = raw_input("enter in a string\n")
+
+word = raw_input("Enter in a word\n")
+
 x = 0
+
+
 for i in range (len(word) / 2):
 	if(word[x]) == (word[len(word)-x-1]):
 		x += 1
