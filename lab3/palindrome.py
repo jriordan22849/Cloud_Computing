@@ -1,4 +1,5 @@
 #	Jonathan Riordan
+#	C13432152
 
 word = raw_input("enter in a string\n")
 x = 0
