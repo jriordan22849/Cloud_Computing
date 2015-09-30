@@ -24,8 +24,3 @@ while(len(var) < 1000) :
 	num2 = sum
 	
 print var
-
-
-
-	
-	
