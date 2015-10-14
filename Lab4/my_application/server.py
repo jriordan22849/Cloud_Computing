@@ -14,7 +14,7 @@ def paul():
 	return "User Paul"
 
 @app.route("/post/80")
-def post
+def post():
 	return "Post 80"
 
 
