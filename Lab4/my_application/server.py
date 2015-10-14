@@ -9,13 +9,13 @@ def hello():
 def index():
 	return "Index File"
 
-@app.route("/user/paul")
-def paul():
-	return "User Paul"
+@app.route("/user/<username>")
+def show_username(username):
+	return "User %s" % username
 
-@app.route("/post/80")
-def post():
-	return "Post 80"
+@app.route("/post/<int:post_id>")
+def post(post_id):
+	return "Post %d" % post_id
 
 
 
