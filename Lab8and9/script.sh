@@ -31,49 +31,49 @@ until [ "$selection" = "0" ]; do
 	read selection
 
 	case $selection in
-		1  ) 	telnet snf-35216.vm.okeanos-global.grnet.gr 8080 
+		1  ) 	telnet snf-35298.vm.okeanos-global.grnet.gr 8083 
 			press_enter
 			;;
-		2  )   	curl -s -X GET -H 'Accept: application/json' http://localhost:8080/containers | python -mjson.tool
+		2  )   	curl -s -X GET -H 'Accept: application/json' http://localhost:8083/containers | python -mjson.tool
 			press_enter
 			;;
-		3  ) 	curl -s -X GET -H 'Accept: application/json' http://localhost:8080/containers?state=running | python -mjson.tool
+		3  ) 	curl -s -X GET -H 'Accept: application/json' http://localhost:8083/containers?state=running | python -mjson.tool
 			press_enter
 			;;
-		4  ) 	curl -s -X GET -H 'Accept: application/json' http://localhost:8080/containers/bfe2305d5b31 | python -mjson.tool
+		4  ) 	curl -s -X GET -H 'Accept: application/json' http://localhost:8083/containers/5e2279d896de | python -mjson.tool
 			press_enter
 			;;
-		5  ) 	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8080/containers/bfe2305d5b31 | python -mjson.tool
+		5  ) 	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8083/containers/5e2279d896de | python -mjson.tool
 			press_enter
 			;;
-		6  ) 	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8080/containersDel | python -mjson.tool
+		6  ) 	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8083/containersDel | python -mjson.tool
 			press_enter
 			;;
-		7  ) 	curl -X POST -H 'Content-Type: application/json' http://localhost:8080/containers -d '{"image": "49b7d316bf66"}' | python -mjson.tool
+		7  ) 	curl -X POST -H 'Content-Type: application/json' http://localhost:8083/containers -d '{"image": "5e2279d896de"}' | python -mjson.tool
 			press_enter
 			;;
-		8  )	curl -X PATCH -H 'Content-Type: application/json' http://localhost:8080/containers/bfe2305d5b31 -d '{"state": "running"}'
+		8  )	curl -X PATCH -H 'Content-Type: application/json' http://localhost:8083/containers/5e2279d896de -d '{"state": "running"}'
 			press_enter
 			;;
-		9  ) 	curl -X PATCH -H 'Content-Type: application/json' http://localhost:8080/containers/bfe2305d5b31 -d '{"state": "stopped"}'
+		9  ) 	curl -X PATCH -H 'Content-Type: application/json' http://localhost:8083/containers/5e2279d896de -d '{"state": "stopped"}'
 			press_enter
 			;;
-		10 )	curl -s -X GET -H 'Accept: application/json' http://localhost:8080/containers/bfe2305d5b31/logs | python -mjson.tool 
+		10 )	curl -s -X GET -H 'Accept: application/json' http://localhost:8083/containers/5e2279d896de/logs | python -mjson.tool 
 			press_enter
 			;;
-		11 )	curl -s -X GET -H 'Accept: application/json' http://localhost:8080/images | python -mjson.tool
+		11 )	curl -s -X GET -H 'Accept: application/json' http://localhost:8083/images | python -mjson.tool
 			press_enter
 			;;
-		12 )	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8080/images/imgID | python -mjson.tool
+		12 )	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8083/images/imgID | python -mjson.tool
 			press_enter
 			;;
-		13 )	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8080/containersDel | python -mjson.tool
+		13 )	curl -s -X DELETE -H 'Accept: application/json' http://localhost:8083/containersDel | python -mjson.tool
 			press_enter
 			;;
-		14 )	curl -s -X PATCH -H 'Content-Type: application/json' http://localhost:8080/images/id -d '{"tag": "test:1.0"}'
+		14 )	curl -s -X PATCH -H 'Content-Type: application/json' http://localhost:8083/images/id -d '{"tag": "test:1.0"}'
 			press_enter
 			;;
-		15 )	curl -H 'Accept: application/json' -F file=@Dockerfile http://localhost:8080/images | python -mjson.tool
+		15 )	curl -H 'Accept: application/json' -F file=@Dockerfile http://localhost:8083/images | python -mjson.tool
 			press_enter
 			;;
 		99) exit
