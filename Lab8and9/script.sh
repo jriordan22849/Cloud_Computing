@@ -31,7 +31,7 @@ until [ "$selection" = "0" ]; do
 	read selection
 
 	case $selection in
-		1  ) 	telnet snf-35298.vm.okeanos-global.grnet.gr 8083 
+		1  ) 	telnet snf-35297.vm.okeanos-global.grnet.gr 8083 
 			press_enter
 			;;
 		2  )   	curl -s -X GET -H 'Accept: application/json' http://83.212.127.216:8083/containers | python -mjson.tool
