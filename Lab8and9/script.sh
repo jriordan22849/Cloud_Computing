@@ -25,7 +25,7 @@ until [ "$selection" = "0" ]; do
 	printf " 13) Delete all Images\n"
 	printf " 14) TAG an Image\n"
 	printf " 15) Create Docker Images from Local Dockerfile\n"
-	printf " \n 99) Exit\n"
+	printf " \n 16) Exit\n"
 
 	printf "\nSelection: "
 	read selection
@@ -76,7 +76,7 @@ until [ "$selection" = "0" ]; do
 		15 )	curl -H 'Accept: application/json' -f file=@dockerfiles http://83.212.127.216:8083/images | python -mjson.tool
 			press_enter
 			;;
-		99) exit
+		16) exit
 			;;
 		* ) printf "You did not choose a valid option!\n"
 	esac
