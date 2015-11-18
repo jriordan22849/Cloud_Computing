@@ -73,7 +73,7 @@ until [ "$selection" = "0" ]; do
 		14 )	curl -s -X PATCH -H 'Content-Type: application/json' http://83.212.127.216:8083/images/id -d '{"tag": "test:1.0"}'
 			press_enter
 			;;
-		15 )	curl -H 'Accept: application/json' -F file=@dockerfiles http://83.212.127.216:8083/images | python -mjson.tool
+		15 )	curl -H 'Accept: application/json' -f file=@dockerfiles http://83.212.127.216:8083/images | python -mjson.tool
 			press_enter
 			;;
 		99) exit
