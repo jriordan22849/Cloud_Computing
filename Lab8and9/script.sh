@@ -27,7 +27,7 @@ until [ "$selection" = "0" ]; do
 	printf " 15) Create Docker Images from Local Dockerfile\n"
 	printf " \n 16) Exit\n"
 
-	printf "\nSelection: "
+	printf "Selection: "
 	read selection
 
 	case $selection in
@@ -73,7 +73,7 @@ until [ "$selection" = "0" ]; do
 		14 )	curl -s -X PATCH -H 'Content-Type: application/json' http://83.212.127.216:8083/images/fb434121fc77 -d '{"tag": "test:1.0"}'
 			press_enter
 			;;
-		15 )	curl -H 'Accept: application/json' -f file=@dockerfiles http://83.212.127.216:8083/images | python -mjson.tool
+		15 )	curl -H 'Accept: application/json' -f file=@dockerfiles/Dockerfile http://83.212.127.216:8083/images | python -mjson.tool
 			press_enter
 			;;
 		16) exit
