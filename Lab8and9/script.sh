@@ -64,7 +64,7 @@ until [ "$selection" = "0" ]; do
 		11 )	curl -s -X GET -H 'Accept: application/json' http://83.212.127.216:8083/images | python -mjson.tool
 			press_enter
 			;;
-		12 )	curl -s -X DELETE -H 'Accept: application/json' http://83.212.127.216:8083/images/imgID | python -mjson.tool
+		12 )	curl -s -X DELETE -H 'Accept: application/json' http://83.212.127.216:8083/images/7dbb22fce137 | python -mjson.tool
 			press_enter
 			;;
 		13 )	curl -s -X DELETE -H 'Accept: application/json' http://83.212.127.216:8083/containersDel | python -mjson.tool
