@@ -20,13 +20,15 @@ conn = boto.sqs.connect_to_region('eu-west-1', aws_access_key_id=access_key_id, 
 
 queue = conn.get_queue(queueName)
 if (queue is not None):
-    try:
-        msgs = conn.receive_message(queue, number_messages=1,attributes='All')
-        if(len(msgs) > 0):
-            print('Messages read = ' + msgs[0].get_body())
-        else:
-            print('No message to be retrieved')
-    except Exception, e:
-        print(e)
+	for i  in range(0,queue.count()) :
+		try:
+			msgs = conn.receive_message(queue, number_messages=queue.count(),attributes='All')
+			if(len(msgs) > 0):
+				print('The message = ' + msgs[i-1].get_body())
+			else:
+				print('No message to be retrieved')
+		except Exception, e:
+			print(e)
 else:
     print('Queue ' + queueName + ' not found')
+
