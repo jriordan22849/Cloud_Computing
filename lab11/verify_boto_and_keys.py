@@ -1,12 +1,15 @@
 import boto
 import urllib2
 
-response = urllib2.urlopen('https://github.com/paulfdoyle/cc-lab11-aws-sqs.git')
+response = urllib2.urlopen('http://ec2-52-30-7-5.eu-west-1.compute.amazonaws.com:81/key')
 
-html = response.read().split(':')
-accessID = html[0]
-accessKEY = html[1]
+html=response.read()
 
-print(accessID)
-print(accessKEY)
+result = html.split(':')
+
+for line in result:
+	print line
+
 print(boto.Version)
+
+
