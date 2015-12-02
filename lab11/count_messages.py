@@ -1,30 +1,25 @@
-
-# This script created a queue
-#
-# Author - Paul Doyle Nov 2015
-#
-#
-import sys
 import boto.sqs
 import boto.sqs.queue
-import urllib2
 from boto.sqs.message import Message
 from boto.sqs.connection import SQSConnection
 from boto.exception import SQSError
+import urllib2
+import sys
 
-name = sys.argv[1]
+# Get the keys from a specific url and then use them to connect to AWS Service 
+access_key_id = ""
+secret_access_key = ""
+keypart1 = urllib2.urlopen("http://ec2-52-30-7-5.eu-west-1.compute.amazonaws.com:81/key").read()
+access_key_id, secret_access_key = keypart1.split(':')
 
-response = urllib2.urlopen('http://ec2-52-30-7-5.eu-west-1.compute.amazonaws.com:81/key')
-html = response.read().split(':')
-access_key_id = html[0]
-secret_access_key = html[1]
+# Set up a connection to the AWS service. 
+conn = boto.sqs.connect_to_region("eu-west-1", aws_access_key_id=access_key_id, aws_secret_access_key=secret_access_key)
 
-conn = boto.sqs.connect_to_region('eu-west-1', aws_access_key_id=access_key_id, aws_secret_access_key=secret_access_key)
+q_name = sys.argv[1]
 
-queue = conn.get_all_queues()
-try:
-	for i in queue:
-		if(i.id == sys.argv[1]):
-			print i.coiunt
-except Exception, e:
-        print(e)
+q = conn.get_queue(q_name)
+
+msg_tot = q.count()
+
+print ("> Messages in the queue: " + str(msg_tot))
+
