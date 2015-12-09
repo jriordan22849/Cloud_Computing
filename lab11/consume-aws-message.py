@@ -19,11 +19,11 @@ q_name = sys.argv[1]
 
 q = conn.get_queue(q_name)
 
-message = q.read()
+m = q.read()
 str = m.get_body()
 
 print("Message read: " + str)
 
-q.delete_message(message)
+q.delete_message(m)
 
 print("Message deleted from the queue")
